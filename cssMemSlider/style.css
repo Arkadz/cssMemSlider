@@ -27,13 +27,14 @@ header h1 {
 }
 
 .sliderContainer {
-    border: solid 4px red;
+    
     box-sizing: border-box;
     width: 80vw;
     height: 50vh;
     max-width: calc(1920px - 384px);
     min-width: 680px;
     overflow: hidden;
+    background-color: black;
    
    
 }
@@ -45,7 +46,7 @@ header h1 {
     
     position: relative;
     left: 0px;
-    border: solid 3px blue;
+    
     
 }
 
@@ -62,6 +63,11 @@ header h1 {
     font-size: 6rem;
     color: white;
     transform: 0.5s;
+
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 
@@ -92,15 +98,15 @@ header h1 {
 }
 
 .hidden {
-    animation: disappear 1s ease-out;
+    animation: startImageEffect 1s ease-out;
     
 }
 
 .appear {
-    animation: appear 1s ease-in;
+    animation: switchEffect 1s ease-in;
 }
 
-@keyframes disappear {
+@keyframes startImageEffect {
     from {
         opacity: 0;
     }
@@ -109,7 +115,7 @@ header h1 {
     }
 }
 
-@keyframes appear {
+@keyframes switchEffect {
     0% {
         opacity: 1;
     }

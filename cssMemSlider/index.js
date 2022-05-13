@@ -24,7 +24,7 @@ class cssMemSlider {
         //add first image
         this.element.addEventListener('animationend', this.removeHiddenClass.bind(this));
         this.currentImage = this.imgItem[this.counter];
-        this.element.innerText = this.currentImage; 
+        this.element.style.backgroundImage = `url('${this.currentImage}')`;
         this.element.classList.add('hidden');
 
         //add controllers
@@ -38,14 +38,25 @@ class cssMemSlider {
     switchImage(index) {
         this.element.addEventListener('animationend', this.removeAppearClass.bind(this));
         this.element.classList.add('appear');
+        
+        
+
         setTimeout(() => {
             this.currentImage = this.imgItem[index];
-            this.element.innerText = this.currentImage;     
+            this.element.style.backgroundImage = `url('${this.currentImage}')`;     
         }, 500);
+
+        
+
     }
 }
 
-const images = ['path 1', 'path 2', 'path 3', 'path 4'];
+const images = [
+                './assets/images/1.jpg', 
+                './assets/images/2.jpg', 
+                './assets/images/3.jpg', 
+                './assets/images/4.jpeg'
+            ];
 
 
 const slider = new cssMemSlider(images);
