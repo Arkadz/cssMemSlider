@@ -1,0 +1,228 @@
+body {
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #3d4b52;
+}
+
+header {
+    
+    margin: 0 auto;
+}
+
+header h1 {
+    color: rgb(154, 176, 195);
+    margin: 0 auto;
+    text-align: center;
+    height: 7vh;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 4rem;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 1.7rem;
+    width: 80vw;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: #5b8397;
+    overflow: hidden;
+    box-shadow: 0 0 10px #b0b9dd;
+    border-radius: 1%;
+    
+}
+
+.sliderContainer {
+    box-sizing: border-box;
+    width: 80vw;
+    overflow: hidden;
+}
+
+.sliderContainer__slider {
+    height: 50vh;
+    width: calc(80vw * 4);
+    display: flex;
+    gap: 1.3rem;
+    transition: transform 0.5s ease-in-out;
+}
+
+.img-item {
+    box-sizing: border-box;
+    display: block;
+    width: 500%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    
+}
+
+.item_1 {
+    background-image: url('./assets/images/1.jpg');
+}
+
+.item_2 {
+    background-image: url('./assets/images/2.jpg');
+}
+
+.item_3 {
+    background-image: url('./assets/images/3.jpg');
+}
+
+.item_4 {
+    background-image: url('./assets/images/4.jpeg');
+}
+
+#radio1:checked ~ .sliderContainer .sliderContainer__slider {
+    transform: translateX(0);
+}
+
+#radio2:checked ~ .sliderContainer .sliderContainer__slider {
+    transform: translateX(-25%);
+}
+
+#radio3:checked ~ .sliderContainer .sliderContainer__slider {
+    transform: translateX(-50%);
+}
+
+#radio4:checked ~ .sliderContainer .sliderContainer__slider {
+    transform: translateX(-75%);
+}
+
+.controls {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    margin-right: 5%;
+}
+
+.controls__area {
+    background-color: #5b8397;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.controls__area:hover{
+    cursor: pointer;
+}
+
+.controls__area-item {
+    transition: 0.5s;
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: solid 3px rgb(4, 11, 138);
+    width: 38.2%;
+    height: 38.2%;
+    background-color: rgb(4, 11, 138);
+}
+
+.controls__area:hover .controls__area-item {
+    border: solid 3px rgb(218, 201, 201);
+    background-color: rgb(218, 201, 201);
+}
+
+.controls__area:active .controls__area-item {
+    transform: scale(0.7);
+}
+
+#radio1:checked ~ .controls .control_1 .controls__area-item {
+    background-color: transparent;
+}
+
+#radio2:checked ~ .controls .control_2 .controls__area-item {
+    background-color: transparent;
+}
+
+#radio3:checked ~ .controls .control_3 .controls__area-item {
+    background-color: transparent;
+}
+
+#radio4:checked ~ .controls .control_4 .controls__area-item {
+    background-color: transparent;
+}
+
+input {
+    display: none;
+}
+
+
+.infoPanel {
+    font-size: 2rem;
+    overflow: hidden;
+    width: 50%;
+}
+
+.infoPanel_imgText {
+    opacity: 0;
+    transition: 0.5s ease-out;
+    color: rgb(222, 228, 233);
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    height: 3rem;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#radio1:checked ~ .infoPanel .text_1 {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#radio2:checked ~ .infoPanel .text_2 {
+    opacity: 1;
+    transform: translateY(-3rem);
+}
+
+#radio3:checked ~ .infoPanel .text_3 {
+    opacity: 1;
+    transform: translateY(-6rem);
+}
+
+#radio4:checked ~ .infoPanel .text_4 {
+    opacity: 1;
+    transform: translateY(-9rem);
+}
+
+@media only screen and (max-width: 980px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 0.5rem;
+    }
+
+    .infoPanel {
+        order: 1;
+        width: 100%;
+    }
+
+    .infoPanel_imgText {
+        text-align: center;
+    }
+
+    .sliderContainer__slider {
+        padding: 0.5rem;
+    }
+
+    .img-item {
+        filter: drop-shadow(0 0 0.3rem #0B0E1B);
+    }
+
+    .controls {
+        margin: 0;
+        
+    }
+
+    .controls__area {
+        padding: 1rem;
+    }
+}
