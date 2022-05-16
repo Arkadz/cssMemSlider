@@ -126,8 +126,8 @@ header h1 {
 }
 
 .controls__area:hover .controls__area-item {
-    border: solid 3px white;
-    background-color: white;
+    border: solid 3px rgb(218, 201, 201);
+    background-color: rgb(218, 201, 201);
 }
 
 .controls__area:active .controls__area-item {
