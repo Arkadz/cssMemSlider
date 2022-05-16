@@ -5,7 +5,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+    background-color: #3d4b52;
 }
 
 header {
@@ -14,14 +14,14 @@ header {
 }
 
 header h1 {
-    
+    color: rgb(154, 176, 195);
     margin: 0 auto;
     text-align: center;
+    height: 7vh;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    font-size: 4rem;
 }
-
-
-
-
 
 .container {
     display: flex;
@@ -31,44 +31,37 @@ header h1 {
     width: 80vw;
     margin: 0 auto;
     padding: 2rem;
+    background-color: #5b8397;
     overflow: hidden;
-    background-color: #3d4b52;
+    box-shadow: 0 0 10px #b0b9dd;
+    border-radius: 1%;
     
-
 }
 
 .sliderContainer {
-    
     box-sizing: border-box;
     width: 80vw;
-    height: 50vh;
     overflow: hidden;
-    background-color: black;
-   
-   
 }
 
 .sliderContainer__slider {
-    box-sizing: border-box;
     height: 50vh;
-    width: (80vw * 5);
+    width: calc(80vw * 4);
     display: flex;
     gap: 1.3rem;
     transition: transform 0.5s ease-in-out;
-    
 }
 
 .img-item {
     box-sizing: border-box;
-    display: inline-block;
-    width: 100%;
+    display: block;
+    width: 500%;
     height: 100%;
-    background-color: rgb(0, 0, 0);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    
 }
-
 
 .item_1 {
     background-image: url('./assets/images/1.jpg');
@@ -102,24 +95,21 @@ header h1 {
     transform: translateX(-75%);
 }
 
-
 .controls {
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
-
+    margin-right: 5%;
 }
 
 .controls__area {
-   
-    background-color: gray;
+    background-color: #5b8397;
     width: 50px;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 
 .controls__area:hover{
     cursor: pointer;
@@ -129,11 +119,10 @@ header h1 {
     transition: 0.5s;
     border-radius: 50%;
     box-sizing: border-box;
-    border: solid 3px  rgb(51, 56, 145);
-    
+    border: solid 3px rgb(4, 11, 138);
     width: 38.2%;
     height: 38.2%;
-    background-color:  rgb(51, 56, 145);
+    background-color: rgb(4, 11, 138);
 }
 
 .controls__area:hover .controls__area-item {
@@ -161,58 +150,79 @@ header h1 {
     background-color: transparent;
 }
 
-
 input {
     display: none;
 }
 
 
-.active {
-    transition: 0.5s;
-    background-color:  transparent;
-}
-
-
-
-
-
-
-
-
 .infoPanel {
-    grid-area: b;
-    background-color: rgba(0, 0, 0, 0.1);
     font-size: 2rem;
+    overflow: hidden;
+    width: 50%;
 }
 
-.hidden {
-    animation: startImageEffect 0.5s ease-out;
-    
+.infoPanel_imgText {
+    opacity: 0;
+    transition: 0.5s ease-out;
+    color: rgb(222, 228, 233);
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    height: 3rem;
+    font-weight: bold;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.appear {
-    animation: switchEffect 0.5s ease-in;
+#radio1:checked ~ .infoPanel .text_1 {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-@keyframes startImageEffect {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+#radio2:checked ~ .infoPanel .text_2 {
+    opacity: 1;
+    transform: translateY(-3rem);
 }
 
-@keyframes switchEffect {
-    0% {
-        opacity: 1;
+#radio3:checked ~ .infoPanel .text_3 {
+    opacity: 1;
+    transform: translateY(-6rem);
+}
+
+#radio4:checked ~ .infoPanel .text_4 {
+    opacity: 1;
+    transform: translateY(-9rem);
+}
+
+@media only screen and (max-width: 980px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 0.5rem;
     }
 
-    50% {
-        opacity: 0;
+    .infoPanel {
+        order: 1;
+        width: 100%;
     }
 
-    100% {
-        opacity: 1;
+    .infoPanel_imgText {
+        text-align: center;
+    }
+
+    .sliderContainer__slider {
+        padding: 0.5rem;
+    }
+
+    .img-item {
+        filter: drop-shadow(0 0 0.3rem #0B0E1B);
+    }
+
+    .controls {
+        margin: 0;
+        
+    }
+
+    .controls__area {
+        padding: 1rem;
     }
 }
