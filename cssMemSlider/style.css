@@ -21,13 +21,16 @@ header h1 {
 
 .container {
     
- 
+    display: grid;
+    grid-template-areas: 
+    "a a a a"
+    "b b b c";
 
 
 }
 
 .sliderContainer {
-    
+    grid-area: a;
     box-sizing: border-box;
     width: 80vw;
     height: 50vh;
@@ -63,8 +66,6 @@ header h1 {
     font-size: 6rem;
     color: white;
     transform: 0.5s;
-
-    
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -72,8 +73,12 @@ header h1 {
 
 
 .controls {
-    margin: 20px 0 0;
+    border: solid 1px red;
+    grid-area: c;
+    
     display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
 
 }
 
@@ -93,7 +98,7 @@ header h1 {
 }
 
 .controls__area-item {
-    transition: 1s;
+    transition: 0.5s;
     border-radius: 50%;
     box-sizing: border-box;
     border: solid 3px  rgb(51, 56, 145);
@@ -104,22 +109,23 @@ header h1 {
 }
 
 .active {
-    transition: 1s;
+    transition: 0.5s;
     background-color:  transparent;
 }
 
 .infoPanel {
+    grid-area: b;
     background-color: rgba(0, 0, 0, 0.1);
     font-size: 2rem;
 }
 
 .hidden {
-    animation: startImageEffect 1s ease-out;
+    animation: startImageEffect 0.5s ease-out;
     
 }
 
 .appear {
-    animation: switchEffect 1s ease-in;
+    animation: switchEffect 0.5s ease-in;
 }
 
 @keyframes startImageEffect {

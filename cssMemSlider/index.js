@@ -1,28 +1,53 @@
 class cssMemSlider {
     
-    currentImage = null;
-    currentText = null;
-    controllers = null;
+   //currentImage = null;
+   //currentText = null;
+   //controllers = null;
     counter = 0;
-    currentControl = null;
-    
+  // currentControl = null;
+   
     constructor (imgItems, texts) {
         this.imgItem = imgItems;
         this.texts = texts;
         this.element = document.querySelector('.img-item');
         this.currentText = document.querySelector('.infoPanel_imgText');
         this.controllers = document.querySelectorAll('.controls__area');
-        this.currentControl = 0;
         this.controlsAreaItem = document.querySelectorAll('.controls__area-item');
+        this.controlsPanel = document.querySelector('.controls');
 
     }
     
+    
+    addControlsListeners() {
+
+        this.controllers.forEach(( element, index )=> {
+
+           element.addEventListener('mouseover', ()=>{
+            if (this.controlsAreaItem[index].classList.contains('active')) {
+                this.controlsAreaItem[index].style.border = 'solid 3px white';
+            } else {
+                this.controlsAreaItem[index].style.border = 'solid 3px white';
+                this.controlsAreaItem[index].style.background = 'white';
+            }
+        });
+           
+            element.addEventListener('mouseout', ()=>{
+                this.controlsAreaItem[index].style = '';
+            });
+            
+         /*element.addEventListener('click', (event)=>{
+               
+                this.switchImage(index);
+            });*/
+
+        });
+    }
+
+
     removeAppearClass() {
         this.element.classList.remove('appear');
         this.currentText.classList.remove('appear');
         this.element.removeEventListener('animationend', this.removeAppearClass.bind(this));
-
-
     }
 
     removeHiddenClass() {
@@ -44,26 +69,39 @@ class cssMemSlider {
 
         this.controlsAreaItem[this.counter].classList.add('active');
 
-        //add controllers
-        this.controllers.forEach(( element, index )=> {
-            element.addEventListener('mouseover', ()=>{
-                if (this.controlsAreaItem[index].classList.contains('active')) {
-                    this.controlsAreaItem[index].style.border = 'solid 3px white';
-                } else {
-                    this.controlsAreaItem[index].style.border = 'solid 3px white';
-                    this.controlsAreaItem[index].style.background = 'white';
-                }
-            });
-            element.addEventListener('mouseout', ()=>{
-                this.controlsAreaItem[index].style = '';
-            });
-            element.addEventListener('click', ()=>{
-                this.switchImage(index);
-            });
-        });
+        this.addControlsListeners();
+        this.controlsPanel.addEventListener('click', this.changeImage.bind(this));
+       
 
     }
 
+    changeImage(event) {
+       this.controlsPanel.removeEventListener('click', this.changeImage.bind(this));
+       let num = +event.target.dataset.num;
+
+       this.element.addEventListener('animationend', this.removeAppearClass.bind(this));
+       this.element.classList.add('appear');
+       this.currentText.addEventListener('animationend', this.removeAppearClass.bind(this));
+       this.currentText.classList.add('appear');
+
+       this.controlsPanel.removeEventListener('click', this.changeImage.bind(this));
+
+
+       setTimeout(() => {
+           this.currentImage = this.imgItem[num];
+           this.element.style.backgroundImage = `url('${this.currentImage}')`;    
+           this.currentText.innerText = this.texts[num];
+           this.controlsAreaItem.forEach(item=>item.classList.remove('active'));
+           this.controlsAreaItem[num].classList.add('active');
+           this.controlsAreaItem[num].style.background = 'transparent';
+       }, 250);
+
+       setTimeout(() => {
+    //   this.controlsPanel.addEventListener('click', this.changeImage.bind(this));
+       }, 250);
+    }
+
+    /*
     switchImage(index) {
         this.element.addEventListener('animationend', this.removeAppearClass.bind(this));
         this.element.classList.add('appear');
@@ -78,8 +116,8 @@ class cssMemSlider {
             this.controlsAreaItem[index].classList.add('active');
             this.controlsAreaItem[index].style.background = 'transparent';
         }, 500);
-    }
-}
+    }*/
+} 
 
 const images = [
                 './assets/images/1.jpg', 
@@ -94,6 +132,6 @@ const texts = [
                 ' text 4'
 ];
 
-const slider = new cssMemSlider(images, texts);
-slider.init();
+// const slider = new cssMemSlider(images, texts);
+// slider.init();
 
