@@ -19,23 +19,29 @@ header h1 {
     text-align: center;
 }
 
-.container {
-    
-    display: grid;
-    grid-template-areas: 
-    "a a a a"
-    "b b b c";
 
+
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 1.7rem;
+    width: 80vw;
+    margin: 0 auto;
+    padding: 2rem;
+    overflow: hidden;
+    background-color: #3d4b52;
+    
 
 }
 
 .sliderContainer {
-    grid-area: a;
+    
     box-sizing: border-box;
     width: 80vw;
     height: 50vh;
-    max-width: calc(1920px - 384px);
-    min-width: 680px;
     overflow: hidden;
     background-color: black;
    
@@ -44,38 +50,60 @@ header h1 {
 
 .sliderContainer__slider {
     box-sizing: border-box;
-    
     height: 50vh;
-    
-    position: relative;
-    left: 0px;
-    
+    width: (80vw * 5);
+    display: flex;
+    gap: 1.3rem;
+    transition: transform 0.5s ease-in-out;
     
 }
 
 .img-item {
     box-sizing: border-box;
     display: inline-block;
-    
-   
     width: 100%;
     height: 100%;
     background-color: rgb(0, 0, 0);
-    position: relative;
-    text-align: center;
-    font-size: 6rem;
-    color: white;
-    transform: 0.5s;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 }
 
 
+.item_1 {
+    background-image: url('./assets/images/1.jpg');
+}
+
+.item_2 {
+    background-image: url('./assets/images/2.jpg');
+}
+
+.item_3 {
+    background-image: url('./assets/images/3.jpg');
+}
+
+.item_4 {
+    background-image: url('./assets/images/4.jpeg');
+}
+
+#radio1:checked ~ .sliderContainer .sliderContainer__slider {
+    transform: translateX(0);
+}
+
+#radio2:checked ~ .sliderContainer .sliderContainer__slider {
+    transform: translateX(-25%);
+}
+
+#radio3:checked ~ .sliderContainer .sliderContainer__slider {
+    transform: translateX(-50%);
+}
+
+#radio4:checked ~ .sliderContainer .sliderContainer__slider {
+    transform: translateX(-75%);
+}
+
+
 .controls {
-    border: solid 1px red;
-    grid-area: c;
-    
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
@@ -108,10 +136,48 @@ header h1 {
     background-color:  rgb(51, 56, 145);
 }
 
+.controls__area:hover .controls__area-item {
+    border: solid 3px white;
+    background-color: white;
+}
+
+.controls__area:active .controls__area-item {
+    transform: scale(0.7);
+}
+
+#radio1:checked ~ .controls .control_1 .controls__area-item {
+    background-color: transparent;
+}
+
+#radio2:checked ~ .controls .control_2 .controls__area-item {
+    background-color: transparent;
+}
+
+#radio3:checked ~ .controls .control_3 .controls__area-item {
+    background-color: transparent;
+}
+
+#radio4:checked ~ .controls .control_4 .controls__area-item {
+    background-color: transparent;
+}
+
+
+input {
+    display: none;
+}
+
+
 .active {
     transition: 0.5s;
     background-color:  transparent;
 }
+
+
+
+
+
+
+
 
 .infoPanel {
     grid-area: b;
